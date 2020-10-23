@@ -56,69 +56,99 @@ pipeline {
             }
 
         stage('PHP information') {
+            steps {
             sh 'php -v || php --version'
             sh 'ls -l `which php`'
+            }
         }
         stage('Requirements Install') {
+            steps {
             sh 'chmod +x test-app-requirements.sh'
             sh './test-app-requirements.sh'
+            }
         }
 
         stage('App Test Install') {
+            steps {
             sh 'chmod +x test-app-install.sh'
             sh './test-app-install.sh'
+            }
         }
         
         stage("PHPLint") {
+            steps {
             sh 'find src/ -name "*.php" -print0 | xargs -0 -n1 php7.3 -l'
+            }
         }
         
         stage("Lines of Code") {
+            steps {
             sh 'php tools/phploc --count-tests --log-csv build/logs/phploc.csv --log-xml build/logs/phploc.xml src/ test/'
+            }
         }
         
         stage("Software metrics") {
+            steps {
             sh 'php vendor/bin/pdepend --jdepend-xml=build/logs/jdepend.xml --jdepend-chart=build/pdepend/dependencies.svg --overview-pyramid=build/pdepend/overview-pyramid.svg src/'
+            }
         }
         
         stage("Mess Detection Report") {
+            steps {
             sh 'php vendor/bin/phpmd src/ xml phpmd.xml --reportfile build/logs/pmd.xml'
+            }
         }
         
         stage("Checkstyle Report") {
+            steps {
             sh 'php tools/phpcs --report=checkstyle --standard=phpcs.xml --report-file=build/logs/checkstyle.xml --extensions=php src/'
+            }
         }        
         
         stage("CPD Report ") {
+            steps {
             sh 'php tools/phpcpd --log-pmd build/logs/pmd-cpd.xml --names-exclude "*Test.php" src/'
+            }
         }
         
         stage("PHPUnit") {
+            steps {
             sh 'php tools/phpunit -c phpunit.xml'
+            }
         }
         
         stage("Generate documentation") {
+            steps {
             sh 'php tools/phpdox -f phpdox.xml'
+            }
         }
         stage("PSALM Error Tracming") {
+            steps {
             sh 'composer require --dev vimeo/psalm'
             sh './vendor/bin/psalm --init'
             sh './vendor/bin/psalm'
+            }
         }
 
         stage("PHPBU backup") {
+            steps {
             sh 'php build/phpbu.phar --version'
             echo "PHPBU is a php tool that creates and encrypts backups, syncs your backups to other servers or cloud services and assists you monitor your backup creation."
+            }
         }
 
         stage("PHPSTAN Code Analysis") {
+            steps {
             sh 'php build/phpstan.phar --version'
             echo "nothing doing here."
+            }
         }
         stage("PHPing") {
+            steps {
             sh 'php build/phing.phar -version'
             echo "PHPUnit unit tests (including test result and coverage reports), file transformations, file system operations, interactive build support"
             echo "SQL execution, Git/Subversion operations, documentation generation (PhpDocumentor, ApiGen)"
+            }
         }
 
 
