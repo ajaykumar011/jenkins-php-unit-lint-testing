@@ -34,17 +34,17 @@ composer require --dev vimeo/psalm
 ./vendor/bin/psalm --init && ./vendor/bin/psalm
 
 #PHPBU Installer
-wget -O build/phpbu.phar https://phar.phpbu.de/phpbu.phar && chmod +x build/phpbu.phar
-/usr/bin/php7.3 build/phpbu.phar --version
+wget -O tools/phpbu.phar https://phar.phpbu.de/phpbu.phar && chmod +x tools/phpbu.phar
+/usr/bin/php7.3 tools/phpbu.phar --version
 
 
 #PHPSTAN
-wget -O build/phpstan.phar https://github.com/phpstan/phpstan/releases/download/0.12.50/phpstan.phar && chmod +x build/phpstan.phar
-/usr/bin/php7.3 build/phpstan.phar --version
+wget -O tools/phpstan.phar https://github.com/phpstan/phpstan/releases/download/0.12.50/phpstan.phar && chmod +x tools/phpstan.phar
+/usr/bin/php7.3 tools/phpstan.phar --version
 
 #PHING
-wget -O build/phing.phar https://www.phing.info/get/phing-latest.phar && chmod +x build/phing.phar
-/usr/bin/php7.3 build/phing.phar -version
+wget -O tools/phing.phar https://www.phing.info/get/phing-latest.phar && chmod +x tools/phing.phar
+/usr/bin/php7.3 tools/phing.phar -version
 
 
 #You compile Xdebug separately from the rest of PHP. You need access to the scripts phpize and php-config. If your system does not have phpize and php-config, you will need to install the PHP development headers.
