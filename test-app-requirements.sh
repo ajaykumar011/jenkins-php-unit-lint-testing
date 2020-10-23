@@ -14,12 +14,12 @@ composer --version
 #/usr/local/bin/phive --version
 
 #other required debug packages
-apt-get -y install -y php7.3-pecl-http php7.3-pecl-http-dev #PECL Install
+apt-get -y install -y php-pecl-http php-pecl-http-dev #PECL Install
 pecl list
 
 #PECL Installation
-sudo apt-get -y install php7.3-pear php7.3-propro php7.3-raphf php7.3-dev libpcre3-dev
+sudo apt-get -y install php-pear php-propro php-raphf php-dev libpcre3-dev
 
 
-pecl install pcov # You should add "extension=pcov.so" to php.ini
+sudo pecl channel-update pecl.php.net # You should add "extension=pcov.so" to php.ini
 apt-get -y install php7.3-dev php7.3-phpdbg # to install xDebug or we can also use 'pecl install xdebug'
