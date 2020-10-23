@@ -150,9 +150,6 @@ pipeline {
             echo "SQL execution, Git/Subversion operations, documentation generation (PhpDocumentor, ApiGen)"
             }
         }
-
-
-
   }  //stage closed
 
     post {
