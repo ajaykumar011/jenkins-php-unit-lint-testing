@@ -8,10 +8,10 @@ php --version
 
 apt-get -y install curl php7.3-cli php7.3-mbstring git unzip
 composer -V || curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-phive --version || sudo wget -O /usr/local/bin/phive https://phar.io/releases/phive.phar
+#phive --version || sudo wget -O /usr/local/bin/phive https://phar.io/releases/phive.phar
 
 composer --version
-/usr/local/bin/phive --version
+#/usr/local/bin/phive --version
 
 #other required debug packages
 apt-get -y install -y php7.3-pecl-http php7.3-pecl-http-dev #PECL Install
