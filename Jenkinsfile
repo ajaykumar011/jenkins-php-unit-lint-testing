@@ -83,31 +83,31 @@ pipeline {
         
         stage("Lines of Code") {
             steps {
-            sh 'php tools/phploc --count-tests --log-csv build/logs/phploc.csv --log-xml build/logs/phploc.xml src/ test/'
+            sh 'php tools/phploc --count-tests --log-csv logs/phploc.csv --log-xml logs/phploc.xml src/ test/'
             }
         }
         
         stage("Software metrics") {
             steps {
-            sh 'php vendor/bin/pdepend --jdepend-xml=build/logs/jdepend.xml --jdepend-chart=build/pdepend/dependencies.svg --overview-pyramid=build/pdepend/overview-pyramid.svg src/'
+            sh 'php vendor/bin/pdepend --jdepend-xml=logs/jdepend.xml --jdepend-chart=pdepend/dependencies.svg --overview-pyramid=pdepend/overview-pyramid.svg src/'
             }
         }
         
         stage("Mess Detection Report") {
             steps {
-            sh 'php vendor/bin/phpmd src/ xml phpmd.xml --reportfile build/logs/pmd.xml'
+            sh 'php vendor/bin/phpmd src/ xml phpmd.xml --reportfile logs/pmd.xml'
             }
         }
         
         stage("Checkstyle Report") {
             steps {
-            sh 'php tools/phpcs --report=checkstyle --standard=phpcs.xml --report-file=build/logs/checkstyle.xml --extensions=php src/'
+            sh 'php tools/phpcs --report=checkstyle --standard=phpcs.xml --report-file=logs/checkstyle.xml --extensions=php src/'
             }
         }        
         
         stage("CPD Report ") {
             steps {
-            sh 'php tools/phpcpd --log-pmd build/logs/pmd-cpd.xml --names-exclude "*Test.php" src/'
+            sh 'php tools/phpcpd --log-pmd logs/pmd-cpd.xml --names-exclude "*Test.php" src/'
             }
         }
         
@@ -132,20 +132,20 @@ pipeline {
 
         stage("PHPBU backup") {
             steps {
-            sh 'php build/phpbu.phar --version'
+            sh 'php tools/phpbu.phar --version'
             echo "PHPBU is a php tool that creates and encrypts backups, syncs your backups to other servers or cloud services and assists you monitor your backup creation."
             }
         }
 
         stage("PHPSTAN Code Analysis") {
             steps {
-            sh 'php build/phpstan.phar --version'
+            sh 'php tools/phpstan.phar --version'
             echo "nothing doing here."
             }
         }
         stage("PHPing") {
             steps {
-            sh 'php build/phing.phar -version'
+            sh 'php tools/phing.phar -version'
             echo "PHPUnit unit tests (including test result and coverage reports), file transformations, file system operations, interactive build support"
             echo "SQL execution, Git/Subversion operations, documentation generation (PhpDocumentor, ApiGen)"
             }

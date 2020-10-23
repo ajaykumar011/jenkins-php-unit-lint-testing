@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="test" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000372">
+    <testsuite name="Example\Test\ApplicationTest" file="/home/ajay/jenkins-php-unit-lint-testing/test/ApplicationTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000372">
+      <testcase name="testWillOutputHelloWorld" class="Example\Test\ApplicationTest" classname="Example.Test.ApplicationTest" file="/home/ajay/jenkins-php-unit-lint-testing/test/ApplicationTest.php" line="19" assertions="1" time="0.000372"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
