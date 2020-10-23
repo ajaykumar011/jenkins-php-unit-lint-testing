@@ -3,9 +3,9 @@ set -e
 #this script install most of the common unit testing phar and composer 
 echo ${PWD}
 
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php --install-dir=tools composer-setup.php
-php -r "unlink('composer-setup.php');"
+/usr/bin/php7.3 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+/usr/bin/php7.3 composer-setup.php
+/usr/bin/php7.3 -r "unlink('composer-setup.php');"
 
 composer -V
 
