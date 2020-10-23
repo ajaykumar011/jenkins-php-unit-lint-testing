@@ -6,7 +6,7 @@ apt-get --yes update
 update-alternatives --set php /usr/bin/php7.3  # with this command you can use php without adding 7.3 version string
 php --version
 
-apt-get -y install curl php7.3-cli php7.3-mbstring git unzip
+apt-get -y install curl php7.3-curl php7.3-cli php7.3-mbstring php7.3-xml git unzip
 composer -V || curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 #phive --version || sudo wget -O /usr/local/bin/phive https://phar.io/releases/phive.phar
 
