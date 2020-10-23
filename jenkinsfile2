@@ -21,7 +21,8 @@ node('php') {
     }
 
     stage("PHPUnit") {
-        sh 'vendor/phpunit/phpunit/phpunit --bootstrap build/bootstrap.php --configuration phpunit-coverage.xml'
+        sh 'phive install phpunit'
+        sh 'phpunit --bootstrap build/bootstrap.php --configuration phpunit-coverage.xml'
     }
 
     stage("Publish Coverage") {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phive xmlns="https://phar.io/phive">
+  <phar name="phpunit" version="^7.3.1" installed="7.3.1" location="./tools/phpunit" copy="false"/>
+  <phar name="phpcs" version="^3.4.0" installed="3.4.0" location="./tools/phpcs" copy="true"/>
+  <phar name="phploc" version="^4.0.1" installed="4.0.1" location="./tools/phploc" copy="true"/>
+  <phar name="phpcpd" version="^4.1.0" installed="4.1.0" location="./tools/phpcpd" copy="true"/>
+  <phar name="phpdox" version="^0.11.2" installed="0.11.2" location="./tools/phpdox" copy="true"/>
+  <phar name="composer/composer" version="^1.8.4" installed="1.8.4" location="./tools/composer" copy="true"/>
+  <phar name="phpcbf" version="^3.5.7" installed="3.5.7" location="./tools/phpcbf" copy="true"/>
+  <phar name="infection" version="^0.18.2" installed="0.18.2" location="./tools/infection" copy="true"/>
+</phive>

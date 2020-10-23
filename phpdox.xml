@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpdox xmlns="http://xml.phpdox.net/config">
+    <project name="example" source="src/" workdir="build/api/xml/">
+        <collector backend="parser">
+            <include mask="*.php" />
+            <exclude mask="*autoload.php" />
+        </collector>
+
+        <generator output=".">
+            <enrich base="build/">
+                <source type="build" />
+                <source type="git">
+                    <git binary="/usr/bin/git" />
+                    <history enabled="true" limit="15" cache="build/api/xml/gitlog.xml" />
+                </source>
+                <source type="phploc">
+                    <file name="logs/phploc.xml" />
+                </source>
+                <source type="checkstyle">
+                    <file name="logs/checkstyle.xml" />
+                </source>
+                <source type="pmd">
+                    <file name="logs/pmd.xml" />
+                </source>
+                <source type="phpunit">
+                    <file directory="coverage/" />
+                </source>
+            </enrich>
+            <build engine="html" enabled="true" output="build/api/html/">
+                <file extension="html" />
+            </build>
+        </generator>
+    </project>
+</phpdox>
