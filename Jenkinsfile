@@ -81,6 +81,7 @@ pipeline {
             }
         }
         
+        parallel {
         stage("Lines of Code") {
             steps {
             sh 'php tools/phploc --count-tests --log-csv logs/phploc.csv --log-xml logs/phploc.xml src/ test/'
@@ -150,6 +151,7 @@ pipeline {
             echo "SQL execution, Git/Subversion operations, documentation generation (PhpDocumentor, ApiGen)"
             }
         }
+    }
   }  //stage closed
 
     post {
