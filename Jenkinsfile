@@ -74,31 +74,31 @@ pipeline {
         }
         
         stage("Lines of Code") {
-            php tools/phploc --count-tests --log-csv build/logs/phploc.csv --log-xml build/logs/phploc.xml src/ test/
+            sh 'php tools/phploc --count-tests --log-csv build/logs/phploc.csv --log-xml build/logs/phploc.xml src/ test/'
         }
         
         stage("Software metrics") {
-            php vendor/bin/pdepend --jdepend-xml=build/logs/jdepend.xml --jdepend-chart=build/pdepend/dependencies.svg --overview-pyramid=build/pdepend/overview-pyramid.svg src/
+            sh 'php vendor/bin/pdepend --jdepend-xml=build/logs/jdepend.xml --jdepend-chart=build/pdepend/dependencies.svg --overview-pyramid=build/pdepend/overview-pyramid.svg src/'
         }
         
         stage("Mess Detection Report") {
-            php vendor/bin/phpmd src/ xml phpmd.xml --reportfile build/logs/pmd.xml
+            sh 'php vendor/bin/phpmd src/ xml phpmd.xml --reportfile build/logs/pmd.xml'
         }
         
         stage("Checkstyle Report") {
-            php tools/phpcs --report=checkstyle --standard=phpcs.xml --report-file=build/logs/checkstyle.xml --extensions=php src/
+            sh 'php tools/phpcs --report=checkstyle --standard=phpcs.xml --report-file=build/logs/checkstyle.xml --extensions=php src/'
         }        
         
         stage("CPD Report ") {
-            php tools/phpcpd --log-pmd build/logs/pmd-cpd.xml --names-exclude "*Test.php" src/
+            sh 'php tools/phpcpd --log-pmd build/logs/pmd-cpd.xml --names-exclude "*Test.php" src/'
         }
         
         stage("PHPUnit") {
-            php tools/phpunit -c phpunit.xml
+            sh 'php tools/phpunit -c phpunit.xml'
         }
         
         stage("Generate documentation") {
-            php tools/phpdox -f phpdox.xml
+            sh 'php tools/phpdox -f phpdox.xml'
         }
         stage("PSALM Error Tracming") {
             sh 'composer require --dev vimeo/psalm'
