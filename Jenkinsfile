@@ -151,7 +151,7 @@ pipeline {
             echo "SQL execution, Git/Subversion operations, documentation generation (PhpDocumentor, ApiGen)"
             }
         }
-    }
+    
   }  //stage closed
 
     post {
@@ -184,5 +184,6 @@ pipeline {
             changed {
                 echo 'Things were different before...'
                 }   
-        } //post closed
+        } 
+    }//post closed
 } //pipeline closed
