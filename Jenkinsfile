@@ -64,7 +64,7 @@ pipeline {
         stage('Requirements Install') {
             steps {
             sh 'chmod +x test-app-requirements.sh'
-            sh './test-app-requirements.sh'
+            sh 'sudo ./test-app-requirements.sh'
             }
         }
 
