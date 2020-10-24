@@ -84,6 +84,7 @@ pipeline {
                         always {
                            // junit "**/TEST-*.xml"
                            echo "I am in always section"
+                            }
                         }
                     }
                 }
