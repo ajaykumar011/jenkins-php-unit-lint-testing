@@ -31,7 +31,7 @@ pipeline {
                         sh 'chmod +x test-app-install.sh'
                         sh './test-app-install.sh'
                     }
-
+        }
         stage('Run Tests') {
             parallel {
                 stage('PHPLint') {
@@ -90,7 +90,6 @@ pipeline {
                 }
             }
         }
-    }
 } //pipeline closed
 
 
