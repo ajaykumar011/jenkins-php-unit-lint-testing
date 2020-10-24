@@ -49,10 +49,10 @@ pipeline {
                         }
                     }
                 }
-                stage('Lines of Code') {
+                stage('PHPUnit') {
                     agent any 
                     steps {
-                        sh 'php tools/phploc --count-tests --log-csv logs/phploc.csv --log-xml logs/phploc.xml src/ test/'
+                       sh 'php tools/phpunit -c phpunit.xml'
                     }
                     post {
                         always {
